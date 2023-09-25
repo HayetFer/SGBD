@@ -11,8 +11,7 @@ liv_titre VARCHAR(50) NOT NULL,
 
 liv_datePubli DATE);
 
---Requete de récup des livres 
-INSERT INTO livre SELECT liv_num, liv_titre, NULL FROM lmsf;
+
 
 
 CREATE TABLE
@@ -30,9 +29,6 @@ liv_num INTEGER NOT NULL, FOREIGN KEY (liv_num) REFERENCES Livre(liv_num),
 
 vis_fichier VARCHAR(50) PRIMARY KEY);
 
---Requete de récup des Auteurs
-INSERT INTO AUTEUR (aut_nom, aut_prenom) SELECT DISTINCT aut_nom, aut_prenom FROM lmsf UNION SELECT DISTINCT aut_nom2, aut_prenom2 FROM lmsf WHERE aut_prenom2 IS NOT NULL;
-
 
 CREATE TABLE IF NOT EXISTS CouvAut(
 vis_fichier VARCHAR(50),
@@ -43,10 +39,12 @@ vis_fichier VARCHAR(50),
 CREATE TABLE
 
 #2
-INSERT INTO Livre(liv_num, liv_titre, liv_DatePubli) SELECT liv_num, liv_titre, NULL FROM lmsf
-;
+--Requete de récup des livres 
+INSERT INTO livre SELECT liv_num, liv_titre, NULL FROM lmsf;
 
-#3
+--Requete de récup des Auteurs
+INSERT INTO AUTEUR (aut_nom, aut_prenom) SELECT DISTINCT aut_nom, aut_prenom FROM lmsf UNION SELECT DISTINCT aut_nom2, aut_prenom2 FROM lmsf WHERE aut_prenom2 IS NOT NULL;
+
 INSERT INTO Couverture (liv_num, vis_fichier) SELECT liv_num,couv_fichier FROM lmsf;
 
 
