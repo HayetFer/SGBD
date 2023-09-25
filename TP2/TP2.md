@@ -38,7 +38,7 @@ vis_fichier VARCHAR(50),
     FOREIGN KEY (aut_id) REFERENCES Auteur(aut_id));
 CREATE TABLE
 
-#2
+# 2
 --Requete de récup des livres 
 INSERT INTO livre SELECT liv_num, liv_titre, NULL FROM lmsf;
 
