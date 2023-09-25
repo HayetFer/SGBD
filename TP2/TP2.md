@@ -39,15 +39,19 @@ CREATE TABLE
 
 # 2
 --Requete de récup des livres 
+
 INSERT INTO livre SELECT liv_num, liv_titre, NULL FROM lmsf;
 
 --Requete de récup des Auteurs
+
 INSERT INTO AUTEUR (aut_nom, aut_prenom) SELECT DISTINCT aut_nom, aut_prenom FROM lmsf UNION SELECT DISTINCT aut_nom2, aut_prenom2 FROM lmsf WHERE aut_prenom2 IS NOT NULL;
 
 --Requete de récup des Couvertures
+
 INSERT INTO couverture SELECT DISTINCT liv_num, couv_fichier FROM lmsf UNION SELECT distinct liv_num, couv_url2 FROM lmsf WHERE couv_url2 IS NOT NULL;
 
 --Requete des CouvAut
+
 INSERT into couvAut SELECT couv_fichier, aut_id FROM lmsf AS L INNER JOIN auteur AS A ON (L.aut_nom = A.aut_nom AND L.aut_prenom = A.aut_prenom) OR (L.aut_nom2 = A.aut_nom AND L.aut_prenom2 = A.aut_prenom) ;
 
 INSERT into couvAut SELECT couv_url2, aut_id FROM lmsf AS L INNER JOIN auteur AS A ON (L.aut_nom = A.aut_nom AND L.aut_prenom = A.aut_prenom) OR (L.aut_nom2 = A.aut_nom AND L.aut_prenom2 = A.aut_prenom) WHERE couv_url2 IS NOT NULL 
