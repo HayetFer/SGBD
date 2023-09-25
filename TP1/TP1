@@ -1,0 +1,74 @@
+#Exercice 1
+
+##1.1
+FBureau = { NumTelephone -> NumBureau; NumBureau -> NumTelephone, Taille; }
+=
+Gbureau =  NumTelephone -> NumBureau; NumBureau -> NumTelephone , NumBureau ->  Taille; }
+
+X->Y Se lit pour chaque X, il y a un unique Y
+Non un bureau ne peut pas contenir plusieurs postes car NumBureau -> NumTelephone 
+
+NumTelephone est une clé minimale et num bureau aussi car on peut accéder a et num bureau et taille avec pareil pour NumBureau
+
+K1 = NumTelephone
+K2 = NumBureau
+
+k3 = (Numtel , taille)
+k4 = (Numtel , NomBureau)
+K5 = (NumBureau, taille)
+k6 = (NumBureau, Numtel, Taille)
+
+
+##1.2
+Occupant(NumBureau, PersonneID)
+avec FOccupant = { NumBureau -> PersonneID }
+
+K = ( NumBureau )
+
+Donc vrai
+
+##1.3
+Materiel(NumBureau, NumPC)
+avec FMateriel = { NumPC -> NumBureau }
+Associé à un seul bureau donc vrai, un bureau peut avoir plusieurs pc
+
+#Exercice 2
+Déterminer avec : Pour une valeur du membre gauche il y a une valeur du membre droit 
+
+ABE -> FC : OUI
+C->D : OUI
+AB -> C : OUI
+AE -> F : NON 
+
+Donc ca ne marche pas 
+
+#Exercice 3
+
+##1) 
+###1.1)
+{UtilisateurId -> Nom, Prénom }
+###1.2)
+{ (UtilisateurId , serveurMail) - > S- >  (Login, Passwd) } == {( userId, serverMail )- > login , (userId, serverMail) - > passWd  }
+###1.3) 
+mail -> userId
+
+###1.4) 
+mail -> serverMail
+
+##2 ) 
+La clé minimale est mail car par transitivité on a tout ensuite 
+![Alt text](image.png)
+
+##3) 
+La forme normale est deuxième forme normale
+
+4 ) Décomposition 
+
+User(UserID, nom , prénom)
+Fuser = userId->nom , userId -> Prénom
+
+UserServer (UserID, ServerMail, Login, password)
+Fuser = {UserIdServerMail - > Login, UserIdServerMail - > passWord}
+
+Adresse (mail, userId, ServerMail )
+Fadresse = {mai - >UserId, mail->ServerMail}
