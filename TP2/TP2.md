@@ -1,5 +1,5 @@
-#Exercice 1:
-##1
+# Exercice 1:
+## 1
 fh201952=> CREATE TABLE IF NOT EXISTS Livre(
 liv_num SERIAL PRIMARY KEY NOT NULL,
 liv_titre VARCHAR(50) NOT NULL,
