@@ -22,3 +22,12 @@ vis_fichier VARCHAR(50),
     FOREIGN KEY (vis_fichier) REFERENCES Couverture(vis_fichier),
     FOREIGN KEY (aut_id) REFERENCES Auteur(aut_id));
 CREATE TABLE
+
+#2
+INSERT INTO Livre(liv_num, liv_titre, liv_DatePubli) SELECT liv_num, liv_titre, NULL FROM lmsf
+;
+
+#3
+INSERT INTO Couverture (liv_num, vis_fichier) SELECT liv_num,couv_fichier FROM lmsf;
+
+
